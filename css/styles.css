@@ -1,0 +1,21 @@
+body{
+    width: 960px;
+}
+header {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+#imageContainer {
+    float: left;
+}
+
+.products {
+    height: 300px;
+    width: 300px;
+    float: left;
+    padding: 10px;
+}
