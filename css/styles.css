@@ -1,21 +1,76 @@
 body{
-    width: 960px;
+    width: 100%;
 }
+
+aside {
+    border: 1px solid black;
+    height: 600px;
+    width: 35%;
+    float: left;
+}
+
+footer {
+    height: 100px;
+    text-align: center;
+}
+
+footer p {
+    padding-top: 50px;
+}
+
 header {
+    height: 15%;
+    width: 100%;
+    margin-bottom: 25px;
     text-align: center;
 }
 
 h1 {
     font-size: 2em;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#primaryContent {
+    float: left;
 }
 
 #imageContainer {
     float: left;
+    width: 60%;
 }
 
-.products {
-    height: 300px;
-    width: 300px;
+img {
+    border: 1px solid black;
+    height: 250px;
+    width: 30%;
     float: left;
-    padding: 10px;
+    margin-left: 10px;
 }
+
+p {
+    font-size: 25px;
+    margin-left: 20px;
+    margin-right: 30px;
+    margin-top: 75px;
+}
+
+#paragraph {
+    float: left;
+    margin: 25 10;
+    width: 60%;
+}
+
+ul {
+    margin-top: 25px;
+    padding-left: 50px;
+}
+li {
+    line-height: 25px;
+    list-style-type: disc;
+  }
