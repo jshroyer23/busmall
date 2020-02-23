@@ -1,7 +1,7 @@
 'use strict';
 console.log('We\'re in business');
 
-var imageElements = document.getElementsByTagName('img');
+var productElements = document.getElementsByTagName('img');
 
 var productIndex1 = 0;
 var productIndex2 = 1;
@@ -31,9 +31,10 @@ new Product('Cthulhu Action Figure', 'img/cthulhu.jpg');
 new Product('Dog Duck Lips', 'img/dog-duck.jpg');
 new Product('Dragon Meat', 'img/dragon.jpg');
 new Product('Silverware Pens', 'img/pen.jpg');
+new Product('Pet Sweeper', 'img/pet-sweep.jpg');
 new Product('Pizza Scissors', 'img/scissors.jpg');
 new Product('Shark Sleeping Bag', 'img/shark.jpg');
-new Product('Pet Sweeper', 'img/pet-sweep.png');
+new Product('Baby Sweeper', 'img/sweep.png');
 new Product('Tauntaun Sleeping Bag', 'img/tauntaun.jpg');
 new Product('Unicorn Meat', 'img/unicorn.jpg');
 new Product('Tentacle Thumbdrive', 'img/usb.gif');
@@ -64,12 +65,12 @@ function productClicked(event) {
   }
   var nextProductIndex2 = Math.floor(Math.random() * allProducts.length);
   // Compares the new second index with existing first, second, and third product indexes, along with the next first and third product indexes.
-  while((nextProductIndex2 === productIndex1) || (nextProductIndex2 === productIndex2) || (nextProductIndex2 === productIndex3) || (nextProductIndex2 === nextProductIndex1) || (nextProductIndex2 === productIndex3)) {
+  while((nextProductIndex2 === productIndex1) || (nextProductIndex2 === productIndex2) || (nextProductIndex2 === productIndex3) || (nextProductIndex2 === nextProductIndex1)) {
     nextProductIndex2 = Math.floor(Math.random() * allProducts.length);
   }
   var nextProductIndex3 = Math.floor(Math.random() * allProducts.length);
   // Compare the the new third index with existing first, second, and third product indexes, along with the next first and second product indexes.
-  while((nextProductIndex3 === productIndex1) || (nextProductIndex3 === productIndex2) || (nextProductIndex3 === productIndex3) || (nextProductIndex3 === nextProductIndex1) || (nextProductIndex3 === productIndex2)) {
+  while((nextProductIndex3 === productIndex1) || (nextProductIndex3 === productIndex2) || (nextProductIndex3 === productIndex3) || (nextProductIndex3 === nextProductIndex1) || (nextProductIndex3 === nextProductIndex2)) {
     nextProductIndex3 = Math.floor(Math.random() * allProducts.length);
   }
 
@@ -81,17 +82,19 @@ function productClicked(event) {
   allProducts[productIndex3].timesSeen++;
 
   // Display the product images
-  imageElements[0].src = allProducts[productIndex1].imageUrl;
-  imageElements[1].src = allProducts[productIndex2].imageUrl;
-  imageElements[2].src = allProducts[productIndex3].imageUrl;
+  productElements[0].src = allProducts[productIndex1].productUrl;
+  productElements[1].src = allProducts[productIndex2].productUrl;
+  productElements[2].src = allProducts[productIndex3].productUrl;
 
   if(totalClicks >= rounds) {
     // We reached the maximum number of clicks designated by rounds
     var resultsEl = document.getElementsByTagName('aside')[0];
-    // Loop through all of the products and 
     if(resultsEl.firstElementChild){
       resultsEl.firstElementChild.remove();
     }
+    var title = document.createElement('h2');
+    title.textContent = 'Results';
+    resultsEl.appendChild(title);
     var createUL = document.createElement('ul');
     for (var i=0; i < allProducts.length; i++){
       var createLI = document.createElement('li');
@@ -100,4 +103,13 @@ function productClicked(event) {
     }
     resultsEl.appendChild(createUL);
   }
+  if(totalClicks === rounds) {
+    for (var j = 0; j < productElements.length; j++) {
+      productElements[j].removeEventListener('click', productClicked);
+    }
+  }
+}
+// Create even listener to run function when a product is clicked
+for (var i = 0; i < productElements.length; i++) {
+  productElements[i].addEventListener('click', productClicked);
 }
