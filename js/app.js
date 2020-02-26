@@ -1,8 +1,7 @@
 'use strict';
 console.log('We\'re in business');
 
-var productElements = document.getElementsByTagName('img');
-
+var productElements = document.getElementsByClassName('prodImg');
 var productIndex1 = 0;
 var productIndex2 = 1;
 var productIndex3 = 2;
@@ -59,12 +58,12 @@ function productClicked(event) {
   }
   // Choose random product to display
   var nextProductIndex1 = Math.floor(Math.random() * allProducts.length);
-  // To ensure that we don't get an image duplicate on the page, and that we dont see it again on the next rotation. Compare the new first index with the existing first, second, and third product indexes, along with the next second and third product indexes.
+  // To ensure that we don't get an image duplicate on the page, and that we dont see it again on the next rotation. Compare the new first index with the existing first, second, and third product indexes.
   while((nextProductIndex1 === productIndex1) || (nextProductIndex1 === productIndex2) || (nextProductIndex1 === productIndex3)) {
     nextProductIndex1 = Math.floor(Math.random() * allProducts.length);
   }
   var nextProductIndex2 = Math.floor(Math.random() * allProducts.length);
-  // Compares the new second index with existing first, second, and third product indexes, along with the next first and third product indexes.
+  // Compares the new second index with existing first, second, and third product indexes, along with the next first index.
   while((nextProductIndex2 === productIndex1) || (nextProductIndex2 === productIndex2) || (nextProductIndex2 === productIndex3) || (nextProductIndex2 === nextProductIndex1)) {
     nextProductIndex2 = Math.floor(Math.random() * allProducts.length);
   }
@@ -98,7 +97,7 @@ function productClicked(event) {
     var createUL = document.createElement('ul');
     for (var i=0; i < allProducts.length; i++){
       var createLI = document.createElement('li');
-      createLI.textContent = allProducts[i].name + ' had ' + allProducts[i].timesClicked + ' votes and was shown ' + allProducts[i].timesSeen + 'times.';
+      createLI.textContent = allProducts[i].name + ' had ' + allProducts[i].timesClicked + ' votes and was shown ' + allProducts[i].timesSeen + ' times.';
       createUL.appendChild(createLI);
     }
     resultsEl.appendChild(createUL);
