@@ -16,7 +16,7 @@ The marketing team is not only interested in the total number of clicks, but als
 
 You are also responsible for the look and feel of the app, so don’t forget a custom font, color palette, layout with semantic HTML, and so on.
 
-# User Stories#
+# User Stories
 1. As a marketer, I want to prevent users from seeing the same image in two subsequent iterations, so that they are not biased.
   -Update your algorithm to randomly generate three unique product images from the images directory.
   -Update your algorithm so that new products are generated, confirm that these products are not duplicates from the immediate previous set.
