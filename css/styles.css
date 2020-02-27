@@ -1,8 +1,12 @@
 body{
+    background: rgba(218,240,255,1);
+    font-family: 'Barlow', Times, serif;
     width: 100%;
 }
 
 aside {
+    background: rgb(143,211,254);
+    background: linear-gradient(90deg, rgba(143,211,254,1) 0%, rgba(101,226,255,1) 50%, rgba(218,240,255,1) 100%);
     border: 1px solid black;
     height: 600px;
     width: 35%;
@@ -26,11 +30,13 @@ header {
 }
 
 h1 {
+    font-family: 'Josefin Sans', Helvetica, sans-serif;
     font-size: 2em;
     margin-top: 20px;
 }
 
 h2 {
+    font-family: 'Josefin Sans', Helvetica, sans-serif;
     font-size: 1.5em;
     font-weight: bold;
     margin-top: 10px;
@@ -60,11 +66,12 @@ p {
     margin-top: 75px;
 }
 
-#paragraph {
+/* Chart replaced paragraph */
+/* #paragraph {
     float: left;
     margin: 25 10;
     width: 60%;
-}
+} */
 
 ul {
     margin-top: 25px;
