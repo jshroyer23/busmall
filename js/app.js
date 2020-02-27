@@ -118,6 +118,32 @@ function productClicked(event) {
   }
 }
 
+// Creates array of colors
+function colorSet(colorType){
+  var colorArray = [];
+  console.log(allProducts.length);
+  for (var i = 0; i < allProducts.length; i++){
+    colorArray.push(randomColor(colorType));
+  }
+  console.log(colorArray);
+  return colorArray;
+}
+
+// Random color generator based on if backgound or border color
+function randomColor(colorType){
+  var r = Math.floor(Math.random()*256);
+  var g = Math.floor(Math.random()*256);
+  var b = Math.floor(Math.random()*256);
+  if (colorType === 'background'){
+    var color = 'rgb(' + r + ',' + g + ',' + b + ', 0.2)';
+  }
+  else if(colorType === 'border'){
+    color = 'rgb(' + r + ',' + g + ',' + b + ', 1)';
+  }
+  return color;
+}
+
+
 function createChart() {
   // Chart code thanks to https://www.chartjs.org/docs/latest/
   var ctx = document.getElementById('voteChart').getContext('2d');
@@ -131,50 +157,8 @@ function createChart() {
         label: '# of Votes',
         // First data set
         data: getProductArray('timesClicked'),
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)'
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)'
-        ],
+        backgroundColor: colorSet('background'),
+        borderColor: colorSet('border'),
         borderWidth: 1
       },
       {
@@ -182,50 +166,9 @@ function createChart() {
         label: '# of Times Seen',
         // Second Data Set
         data: getProductArray('timesSeen'),
-        backgroundColor: [
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(153, 102, 255, 0.2)'
-        ],
-        borderColor: [
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 159, 64, 1)',
-          'rgba(255, 99, 132, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 159, 64, 1)',
-          'rgba(255, 99, 132, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 159, 64, 1)',
-          'rgba(255, 99, 132, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 159, 64, 1)'
-        ],
+        backgroundColor: colorSet('background'),
+        borderColor: colorSet('border'),
+
         borderWidth: 1
       }]
     },
