@@ -28,12 +28,15 @@ function getProductArray(productProperty) {
 
 var savedProducts = localStorage.getItem('savedProduct');
 // Check to see if anything in localStorage
+console.log(savedProducts);
 if (savedProducts) {
   var productStrObject = JSON.parse(savedProducts);
-
+  console.log('Product Object ', productStrObject);
   // Turn the string obj into a Product obj
   for (var i = 0; i < productStrObject.length; i++) {
-    new Product(productStrObject[i].name, productStrObject[i].productUrl, productStrObject[i].timesClicked, productStrObject[i].timesSeen);
+    new Product(productStrObject[i].name, productStrObject[i].productUrl);
+    allProducts[i].timesClicked = productStrObject[i].timesClicked;
+    allProducts[i].timesSeen = productStrObject[i].timesSeen;
   }
 }
 else {
@@ -59,7 +62,7 @@ else {
   new Product('Watering Can', 'img/water-can.jpg');
   new Product('Wine Glass', 'img/wine-glass.jpg');
 }
-
+console.log(allProducts);
 // Account for first three Products being seen
 allProducts[productIndex1].timesSeen++;
 allProducts[productIndex2].timesSeen++;
@@ -136,11 +139,9 @@ function productClicked(event) {
 // Creates array of colors
 function colorSet(colorType) {
   var colorArray = [];
-  console.log(allProducts.length);
   for (var i = 0; i < allProducts.length; i++) {
     colorArray.push(randomColor(colorType));
   }
-  console.log(colorArray);
   return colorArray;
 }
 
@@ -150,7 +151,7 @@ function randomColor(colorType) {
   var g = Math.floor(Math.random() * 256);
   var b = Math.floor(Math.random() * 256);
   if (colorType === 'background') {
-    var color = 'rgb(' + r + ',' + g + ',' + b + ', 0.2)';
+    var color = 'rgb(' + r + ',' + g + ',' + b + ', 0.4)';
   }
   else if (colorType === 'border') {
     color = 'rgb(' + r + ',' + g + ',' + b + ', 1)';
@@ -200,9 +201,15 @@ function createChart() {
   });
 }
 
-
-
-// Create even listener to run function when a product is clicked
+// Create event listener to run function when a product is clicked
 for (var i = 0; i < productElements.length; i++) {
   productElements[i].addEventListener('click', productClicked);
 }
+
+function refreshPage(){
+  window.location.reload();
+}
+
+// event listener to refresh the page
+var refreshButton = document.getElementById('refresh');
+refreshButton.addEventListener('click', refreshPage);
