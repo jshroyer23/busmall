@@ -27,3 +27,6 @@ You are also responsible for the look and feel of the app, so don’t forget a c
   -Using ChartJS (imported from CDN), display the vote totals and the number of times a product was viewed in a bar chart format. (hint: don’t forget about the <canvas> tags)
   -Place the bar chart in the section located beneath your three product images
   -The bar charts should only appear after all voting data has been collected.
+4. As a user, I would like my data to persistently track totals between page refreshes, so that I can keep track of the aggregate number of votes.
+  -Implement local storage into your current application
+  -Make sure the data persists across both browser refreshes and resets
